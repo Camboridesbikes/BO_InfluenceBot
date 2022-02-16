@@ -23,7 +23,7 @@ import {validateEnv} from "./utils/validateEnv";
 
     await connectDatabase();
 
-    await client.login(process.env.BOT_Token);
+    await client.login(process.env.BOT_TOKEN);
 
     //console.log(client);
 
