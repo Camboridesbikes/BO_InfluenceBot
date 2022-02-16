@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "node -r dotenv/config Bot.js",
+    "start": "node -r dotenv/config ./dist/bot.js",
     "Dstart": "ts-node -r dotenv/config ./src/bot.ts"
   },
   "author": "CameronHattendorf",
