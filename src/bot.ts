@@ -32,7 +32,7 @@ import {validateEnv} from "./utils/validateEnv";
         res.end('Hello World');
     })
 
-    server.listen(8000, () => {
+    server.listen(process.env.PORT || 8000, () => {
         console.log('server running');
     })
 
