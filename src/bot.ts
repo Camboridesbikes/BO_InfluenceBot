@@ -26,16 +26,6 @@ import {validateEnv} from "./utils/validateEnv";
 
     await client.login(process.env.BOT_TOKEN);
 
-    const server = createServer((req,res) =>{
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'text/plain');
-        res.end('Hello World');
-    })
-
-    server.listen(process.env.PORT || 8000, () => {
-        console.log('server running');
-    })
-
     //console.log(client);
 
 })();
