@@ -1,5 +1,4 @@
 import {Client, Interaction} from "discord.js";
-import { createServer } from "http2";
 
 import { IntentOptions } from "./config/IntentOptions";
 import { connectDatabase } from "./database/connectDatabase";
@@ -25,16 +24,6 @@ import {validateEnv} from "./utils/validateEnv";
     await connectDatabase();
 
     await client.login(process.env.BOT_Token);
-
-    const server = createServer((req,res) =>{
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'text/plain');
-        res.end('Hello World');
-    })
-
-    server.listen(process.env.PORT || 8000, () => {
-        console.log('server running');
-    })
 
     //console.log(client);
 

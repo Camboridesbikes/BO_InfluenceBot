@@ -1,5 +1,5 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { GuildMember, MessageEmbed } from "discord.js";
+import { MessageEmbed } from "discord.js";
 import { Command } from "../interfaces/Command";
 import { getMemberData } from "../modules/getMemberData";
 import { updateMemberData } from "../modules/updateMemberData";
