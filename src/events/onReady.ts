@@ -12,7 +12,7 @@ export const onReady = async (client: Client) => {
     const commandData = CommandList.map((command) => command.data.toJSON());
 
     await rest.put(
-        Routes.applicationGuildCommands(client.user?.id || "missing id", process.env.GUILD_ID as string ),
+        Routes.applicationGuildCommands(process.env.APPLICATION_ID as string || "missing id", process.env.GUILD_ID as string ),
         {body: commandData}
     );
 
