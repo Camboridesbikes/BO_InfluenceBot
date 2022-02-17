@@ -24,7 +24,7 @@ import {validateEnv} from "./utils/validateEnv";
 
     await connectDatabase();
 
-    await client.login(process.env.BOT_TOKEN);
+    await client.login(process.env.BOT_Token);
 
     const server = createServer((req,res) =>{
         res.statusCode = 200;
