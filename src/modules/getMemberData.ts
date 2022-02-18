@@ -2,7 +2,7 @@ import MemberModel from "../database/models/MemberModel"
 
 export const getMemberData = async(id : string) => {
     const memberData = 
-    (await MemberModel.findOne({id})) ||
+    (await MemberModel.findOne({id: {id}})) ||
     (await MemberModel.create({
         discordId: id,
         totalInfluence: 0,
