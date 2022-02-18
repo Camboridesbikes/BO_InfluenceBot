@@ -20,7 +20,7 @@ export const addInfluence : Command = {
         const member = guild?.members.fetch({user, force: true});
         const amnt : string = interaction.options.getString("amount", true)
 
-        const targetMember = await getMemberData(user.toString());
+        const targetMember = await getMemberData(user.id);
         const updatedMember = await updateMemberData(targetMember,  parseInt(amnt, 10));
         
         const influenceEmbed = new MessageEmbed();
