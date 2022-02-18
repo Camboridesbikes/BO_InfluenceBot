@@ -8,7 +8,7 @@ export interface MemberInt extends Document{
 }
 
 export const Member = new Schema({
-    discordId: String,
+    discordId: {type: String, required: true, unique: true},
     totalInfluence: Number,
     currentInfluence: Number,
     timestamp: Number

@@ -21,6 +21,7 @@ export const addInfluence : Command = {
         const amnt : string = interaction.options.getString("amount", true)
 
         const targetMember = await getMemberData(user.id);
+        console.log(`targetMember: ${targetMember}`);
         const updatedMember = await updateMemberData(targetMember,  parseInt(amnt, 10));
         
         const influenceEmbed = new MessageEmbed();
