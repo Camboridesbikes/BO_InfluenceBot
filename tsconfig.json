@@ -70,7 +70,7 @@
     "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
   },
   "files":[ 
-    "src/bot.ts"
+    "./src/bot.ts"
   ],
   "include": [
     "./**/*.ts"
