@@ -2,6 +2,7 @@ import { Interaction } from "discord.js";
 import { CommandList } from "../commands/_CommandList";
 
 export const onInteraction = async (interaction : Interaction)=> {
+    console.log('onInteraction');
     if(interaction.isCommand()){
         for (const Command of CommandList){
             if(interaction.commandName === Command.data.name){

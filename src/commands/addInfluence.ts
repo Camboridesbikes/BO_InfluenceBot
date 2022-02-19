@@ -15,6 +15,7 @@ export const addInfluence : Command = {
             .setRequired(true)
     ),
     run: async(interaction) => {
+        console.log('interacting');
         await interaction.deferReply();
         const {user, guild} = interaction;
         const member = guild?.members.fetch({user, force: true});
