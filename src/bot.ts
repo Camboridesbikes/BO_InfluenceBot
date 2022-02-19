@@ -27,9 +27,6 @@ import { onInteraction } from "./events/onInteraction";
         async(interaction : Interaction) => await onInteraction(interaction)
     )
 
-   
-    console.log(await getMemberData("443918308648026112"));
-
     client.on("ready", async () => {
         await onReady(client);
         
