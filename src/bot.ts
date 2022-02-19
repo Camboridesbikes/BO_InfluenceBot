@@ -26,9 +26,12 @@ import {validateEnv} from "./utils/validateEnv";
 
     client.on("ready", async () => {
         await onReady(client);
-        agenda.start();
-        agenda.every("* 10 */1 * *","post daily leaderboard", {timezone : "Europe/London"} );
-        agenda.every("* 10 * 1 *","post weekly leaderboard", {timezone : "Europe/London"} );
+        agenda.on('ready', () => {
+            agenda.start();
+            agenda.every("* 10 */1 * *","post daily leaderboard", {timezone : "Europe/London"} );
+            agenda.every("* 10 * 1 *","post weekly leaderboard", {timezone : "Europe/London"} );
+        })
+        
     })
 
     
