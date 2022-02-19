@@ -22,7 +22,7 @@ export const addInfluence : Command = {
 
         const targetMember = await getMemberData(user.id);
         console.log(`targetMember: ${targetMember} --> ${user.username} / id: ${user.id}`);
-        const updatedMember = await updateMemberData(targetMember,  parseInt(amnt, 10));
+        const updatedMember = await updateMemberData(targetMember,  (targetMember.currentInfluence + parseInt(amnt, 10)));
         
         const influenceEmbed = new MessageEmbed();
         influenceEmbed.setTitle("Influence");

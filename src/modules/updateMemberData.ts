@@ -1,8 +1,8 @@
 import { MemberInt } from "../database/models/MemberModel";
 
-export const updateMemberData = async (Member : MemberInt, influence : number) => {
-    Member.totalInfluence += influence;
-    Member.currentInfluence += influence;
+export const updateMemberData = async (Member : MemberInt, currentInfluence : number, totalInfluence? : number ) => {
+    Member.totalInfluence = totalInfluence || Member.totalInfluence + currentInfluence;
+    Member.currentInfluence = currentInfluence;
     Member.timestamp = Date.now();
     await Member.save();
     return Member;
