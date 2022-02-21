@@ -17,6 +17,7 @@ import { onInteraction } from "./events/onInteraction";
 
     agenda.define("post daily leaderboard", async () => await postLeaderboardDaily(client))
     agenda.define("post weekly leaderboard", async () => await postLeaderboardWeekly(client))
+    agenda.define('test ping', () => console.log('agenda ping'))
 
 
     const client = new Client({
@@ -31,7 +32,7 @@ import { onInteraction } from "./events/onInteraction";
         await onReady(client);
         
         agenda.on('ready', async () => {
-            agenda.start();
+            await agenda.start();
             await agenda.every("30 9 */1 * *","post daily leaderboard", {timezone : "Europe/London"} );
             await agenda.every("* 10 * 1 *","post weekly leaderboard", {timezone : "Europe/London"} );
         })
