@@ -35,6 +35,7 @@ import { onInteraction } from "./events/onInteraction";
             await agenda.start();
             await agenda.every("0 10 * * *","post daily leaderboard", {timezone : "Europe/London"} );
             await agenda.every("5 10 * * 1","post weekly leaderboard", {timezone : "Europe/London"} );
+
         })
         
     })
