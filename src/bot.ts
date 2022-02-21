@@ -30,10 +30,10 @@ import { onInteraction } from "./events/onInteraction";
     client.on("ready", async () => {
         await onReady(client);
         
-        agenda.on('ready', () => {
+        agenda.on('ready', async () => {
             agenda.start();
-            agenda.every("* 10 */1 * *","post daily leaderboard", {timezone : "Europe/London"} );
-            agenda.every("* 10 * 1 *","post weekly leaderboard", {timezone : "Europe/London"} );
+            await agenda.every("30 9 */1 * *","post daily leaderboard", {timezone : "Europe/London"} );
+            await agenda.every("* 10 * 1 *","post weekly leaderboard", {timezone : "Europe/London"} );
         })
         
     })

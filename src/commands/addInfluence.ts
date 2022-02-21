@@ -31,7 +31,7 @@ export const addInfluence : Command = {
             name: (await member)?.nickname || user.username,
             iconURL: user.displayAvatarURL(),
         });
-        influenceEmbed.addField(`Current Influence: `, updatedMember.currentInfluence.toString(), true);
+        influenceEmbed.addField(`Total Influence: `, updatedMember.totalInfluence.toString(), true);
         influenceEmbed.addField('Added Influence: ', amnt, true);
 
         await interaction.editReply({embeds: [influenceEmbed]});
