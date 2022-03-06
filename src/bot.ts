@@ -17,7 +17,7 @@ import { onInteraction } from "./events/onInteraction";
 
     agenda.define("post daily leaderboard", async () => await postLeaderboardDaily(client))
     agenda.define("post weekly leaderboard", async () => await postLeaderboardWeekly(client))
-    agenda.define('test ping', () => console.log('agenda ping'))
+    //agenda.define('test ping', () => console.log('agenda ping'))
 
 
     const client = new Client({
