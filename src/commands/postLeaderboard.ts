@@ -1,11 +1,11 @@
 import { Client, Guild, MessageEmbed, TextChannel } from "discord.js"
 import { resetDailyInfluence, resetWeeklyInfluence } from "../modules/resetMemberInfluence";
 import { MemberInt } from "../database/models/MemberModel";
-import { getLeaderboardData } from "../modules/getLeaderboardData";
+import { getDailyLeaderboardData, getWeeklyLeaderboardData } from "../modules/getLeaderboardData";
 
 export const postLeaderboardDaily = async (client : Client) => {
 
-    const data = await getLeaderboardData() as MemberInt [];
+    const data = await getDailyLeaderboardData() as MemberInt [];
     //console.log(data);
     const guild =  await (client.guilds.fetch(process.env.GUILD_ID as string)) as Guild;
     
@@ -38,7 +38,7 @@ export const postLeaderboardDaily = async (client : Client) => {
 }
 
 export const postLeaderboardWeekly = async (client : Client) => {
-    const data = await getLeaderboardData() as MemberInt [];
+    const data = await getWeeklyLeaderboardData() as MemberInt [];
     //console.log(data);
     const guild =  await (client.guilds.fetch(process.env.GUILD_ID as string)) as Guild;
     
