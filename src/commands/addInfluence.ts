@@ -15,15 +15,19 @@ export const addInfluence : Command = {
             .setRequired(true)
     ),
     run: async(interaction) => {
-        console.log('interacting');
+
+        console.log('___ interacting ___');
+
         await interaction.deferReply();
         const {user, guild} = interaction;
         const member = guild?.members.fetch({user, force: true});
         const amnt : string = interaction.options.getString("amount", true)
+        const amntNum : number = parseInt(amnt, 10);
+
+        console.log(`-------- amount: ${amnt} vs amntNum ${amntNum} ---------`)
 
         const targetMember = await getMemberData(user.id);
-        console.log(`targetMember: ${targetMember} --> ${user.username} / id: ${user.id}`);
-        const updatedMember = await updateMemberData(targetMember,  (targetMember.currentInfluence + parseInt(amnt, 10)));
+        const updatedMember = await updateMemberData(targetMember,  (targetMember.currentInfluence + amntNum));
         
         const influenceEmbed = new MessageEmbed();
         influenceEmbed.setTitle("Influence");
@@ -32,7 +36,7 @@ export const addInfluence : Command = {
             iconURL: user.displayAvatarURL(),
         });
         influenceEmbed.addField(`Total Influence: `, updatedMember.totalInfluence.toString(), true);
-        influenceEmbed.addField('Added Influence: ', amnt, true);
+        influenceEmbed.addField('Added Influence: ', amntNum.toString(), true);
 
         await interaction.editReply({embeds: [influenceEmbed]});
     }

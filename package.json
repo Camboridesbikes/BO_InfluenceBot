@@ -8,7 +8,7 @@
     "build": "tsc",
     "start": "node -r dotenv/config ./dist/bot.js",
     "build-start": "tsc; node -r dotenv/config ./dist/bot.js",
-    "dstart": "ts-node -r dotenv/config ./src/bot.ts",
+    "dev": "ts-node -r dotenv/config ./src/bot.ts",
     "test-leaderboard": "ts-node -r dotenv/config ./src/scheduled/leaderboard.ts"
   },
   "author": "CameronHattendorf",

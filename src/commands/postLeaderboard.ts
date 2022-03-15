@@ -6,7 +6,7 @@ import { getDailyLeaderboardData, getWeeklyLeaderboardData } from "../modules/ge
 export const postLeaderboardDaily = async (client : Client) => {
 
     const data = await getDailyLeaderboardData() as MemberInt [];
-    //console.log(data);
+    console.log(`postLeaderboard data: ${data}`);
     const guild =  await (client.guilds.fetch(process.env.GUILD_ID as string)) as Guild;
     
     const member = async (id : string) => {
@@ -39,7 +39,6 @@ export const postLeaderboardDaily = async (client : Client) => {
 
 export const postLeaderboardWeekly = async (client : Client) => {
     const data = await getWeeklyLeaderboardData() as MemberInt [];
-    //console.log(data);
     const guild =  await (client.guilds.fetch(process.env.GUILD_ID as string)) as Guild;
     
     const member = async (id : string) => {

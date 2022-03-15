@@ -5,7 +5,6 @@ import { IntentOptions } from "./config/IntentOptions";
 import { connectDatabase } from "./database/connectDatabase";
 import { onReady } from "./events/onReady";
 import {validateEnv} from "./utils/validateEnv";
-import { getMemberData } from "./modules/getMemberData";
 import { onInteraction } from "./events/onInteraction";
 
 (async () => {
