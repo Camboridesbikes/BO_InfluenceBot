@@ -23,11 +23,10 @@ export const addInfluence : Command = {
         const member = guild?.members.fetch({user, force: true});
         const amnt : string = interaction.options.getString("amount", true)
         const amntNum : number = parseInt(amnt, 10);
-
-        console.log(`-------- amount: ${amnt} vs amntNum ${amntNum} ---------`)
-
+        
         const targetMember = await getMemberData(user.id);
-        const updatedMember = await updateMemberData(targetMember,  (targetMember.currentInfluence + amntNum));
+        console.log(`targetMember: ${targetMember} --> ${user.username} / id: ${user.id} / currentinfluence: ${targetMember.currentInfluence}`);
+        const updatedMember = await updateMemberData(targetMember,  (amntNum));
         
         const influenceEmbed = new MessageEmbed();
         influenceEmbed.setTitle("Influence");
