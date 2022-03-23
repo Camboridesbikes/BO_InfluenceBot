@@ -23,11 +23,12 @@ export const postLeaderboardDaily = async (client : Client) => {
     
     Promise.all(
     data.map(async (userData, i) => {
-            const name = await member(userData.discordId)
-            message.addField(`${i+1}.`, name , true);
-            console.log
-            message.addField('influence', userData.currentInfluence.toString(), true);
-            message.addField('\u200b', '\u200b', false)
+      if(userData.currentInfluence > 0){
+        const name = await member(userData.discordId)
+        message.addField(`${i+1}.`, name , true);
+        message.addField('influence', userData.currentInfluence.toString(), true);
+        message.addField('\u200b', '\u200b', false)
+      }           
 
     })).then( async () => {
         await (client.channels.cache.get(process.env.POST_CHANNEL_ID as string) as TextChannel).send({embeds: [ message]})
@@ -56,11 +57,12 @@ export const postLeaderboardWeekly = async (client : Client) => {
     
     Promise.all(
     data.map(async (userData, i) => {
-            const name = await member(userData.discordId)
-            message.addField(`${i+1}.`, name , true);
-            console.log
-            message.addField('influence', userData.totalInfluence.toString(), true);
-            message.addField('\u200b', '\u200b', false)
+      if(userData.totalInfluence > 0){
+        const name = await member(userData.discordId)
+        message.addField(`${i+1}.`, name , true);
+        message.addField('influence', userData.totalInfluence.toString(), true);
+        message.addField('\u200b', '\u200b', false)
+      }
 
     })).then( async () => {
         await (client.channels.cache.get(process.env.POST_CHANNEL_ID as string) as TextChannel).send({embeds: [ message]})
