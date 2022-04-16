@@ -7,8 +7,8 @@ export const postLeaderboardDaily = async (client : Client) => {
 
     const data = await getDailyLeaderboardData() as MemberInt [];
     console.log(`postLeaderboard data: ${data}`);
-    const guild =  await (client.guilds.fetch(process.env.GUILD_ID as string)) as Guild;
-    
+    const guild =  await (client.guilds.fetch(process.env.GUILD_ID as string)) as Guild;  
+
     const member = async (id : string) => {
         const user = await client.users.fetch(id);
       const guildMember = await guild.members.fetch({user});

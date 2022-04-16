@@ -1,6 +1,7 @@
 import {Client, Interaction} from "discord.js";
 import {Agenda} from 'agenda'
-import { postLeaderboardDaily, postLeaderboardWeekly } from "./commands/postLeaderboard";
+
+import {defineJobs, runJobs} from "./scheduling/defineJobs"
 import { IntentOptions } from "./config/IntentOptions";
 import { connectDatabase } from "./database/connectDatabase";
 import { onReady } from "./events/onReady";
@@ -14,14 +15,11 @@ import { onInteraction } from "./events/onInteraction";
 
     const agenda = new Agenda({db: {address: (process.env.MONGODB_URI as string)}});
 
-    agenda.define("post daily leaderboard", async () => await postLeaderboardDaily(client))
-    agenda.define("post weekly leaderboard", async () => await postLeaderboardWeekly(client))
-    //agenda.define('test ping', () => console.log('agenda ping'))
-
-
     const client = new Client({
         intents: IntentOptions
     });
+
+    await defineJobs(agenda, client);   
     
     client.on("interactionCreate", 
         async(interaction : Interaction) => await onInteraction(interaction)
@@ -30,12 +28,7 @@ import { onInteraction } from "./events/onInteraction";
     client.on("ready", async () => {
         await onReady(client);
         
-        agenda.on('ready', async () => {
-            await agenda.start();
-            await agenda.every("0 10 * * *","post daily leaderboard", {timezone : "Europe/London"} );
-            await agenda.every("5 10 * * 1","post weekly leaderboard", {timezone : "Europe/London"} );
-
-        })
+        await runJobs(agenda);
         
     })
 

@@ -1,2 +1,3 @@
-# BO_InfluenceBot
-A Discord bot to log influence for Bannerlord Online clans.
+# Bannerlord Online InfluenceBot
+
+A Discord bot for players to log influence added to Bannerlord Online clans. 
