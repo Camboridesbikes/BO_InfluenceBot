@@ -7,7 +7,7 @@ export const onInteraction = async (interaction : Interaction)=> {
         for (const Command of CommandList){
             if(interaction.commandName === Command.data.name){
                 await Command.run(interaction);
-                //console.log(interaction);
+                console.log(interaction);
                 break;
             }
         }

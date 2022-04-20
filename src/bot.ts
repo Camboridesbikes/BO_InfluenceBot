@@ -1,4 +1,4 @@
-import {Client, Interaction} from "discord.js";
+import {Client} from "discord.js";
 import {Agenda} from 'agenda'
 
 import {defineJobs, runJobs} from "./scheduling/defineJobs"
@@ -6,10 +6,10 @@ import { IntentOptions } from "./config/IntentOptions";
 import { connectDatabase } from "./database/connectDatabase";
 import { onReady } from "./events/onReady";
 import {validateEnv} from "./utils/validateEnv";
-import { onInteraction } from "./events/onInteraction";
+import {handleInteraction} from "./handlers/interaction";
 
-(async () => {
-    if(!validateEnv()) return;
+(async () => { 
+    if(!validateEnv()) return; //checks that environmental variables != null
 
     await connectDatabase();
 
@@ -19,18 +19,18 @@ import { onInteraction } from "./events/onInteraction";
         intents: IntentOptions
     });
 
-    await defineJobs(agenda, client);   
+    await defineJobs(agenda, client); 
     
-    client.on("interactionCreate", 
-        async(interaction : Interaction) => await onInteraction(interaction)
-    )
+   
+    
+    client.on("interactionCreate", handleInteraction);
 
     client.on("ready", async () => {
         await onReady(client);
         
-        await runJobs(agenda);
-        
     })
+
+    client.on("runJob", async () => await runJobs(agenda));
 
     
 

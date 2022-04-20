@@ -25,7 +25,6 @@ export const postLeaderboardDaily = async (client : Client) => {
     data.map(async (userData, i) => {
             const name = await member(userData.discordId)
             message.addField(`${i+1}.`, name , true);
-            console.log
             message.addField('influence', userData.currentInfluence.toString(), true);
             message.addField('\u200b', '\u200b', false)
 
