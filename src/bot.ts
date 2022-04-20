@@ -27,14 +27,16 @@ import {handleInteraction} from "./handlers/interaction";
 
     client.on("ready", async () => {
         await onReady(client);
+
+        await runJobs(agenda);// TODO: maybe place inside onReadyFunction once able to validate and test agenda
         
     })
-
-    client.on("runJob", async () => await runJobs(agenda));
 
     
 
     await client.login(process.env.BOT_TOKEN);
+
+    client.on("disconnect", () => console.log("web socket disconnected..."))
 
     
 
