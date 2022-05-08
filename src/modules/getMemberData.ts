@@ -6,7 +6,8 @@ export const getMemberData = async(id : string) => {
     (await MemberModel.create({
         discordId: id,
         totalInfluence: 0,
-        currentInfluence: 0,
+        currentWeeklyInfluence: 0,
+        currentDailyInfluence: 0,
         timestamp: Date.now(),
     }))
     return memberData;
